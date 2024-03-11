@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+          <li class="nav-item">
+              <a class="nav-link" href="#">Features</a>
+          </li>
+      </ul>
+  </div>
+</nav>
+<div class="chat-window" style="position: relative;">
+  <div class="messages">
+    <div class=" message-content" *ngFor="let item of userMessages">
+      <div *ngIf="item.type=='que'"  class="message user" style="float: right;">{{ item.message }}</div>
+      <div *ngIf="item.type=='ans'" class="message bot" style="float: left;">{{ item.message }}</div>
+    </div>
+    <!-- <div class="message bot" style="float: left;" *ngFor="let message of botResponses">
+      <div class="message-content">{{ message }}</div>
+    </div> -->
+  </div>
+  <div class="input-container" style="position: fixed;
+  bottom: 0px;
+  background: #fff;
+  top: 391px;
+  height: 64px;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-top: 0px;">
+    <input type="text" [(ngModel)]="newMessage" (keyup.enter)="sendMessage()"placeholder="Type a message...">
+    <button (click)="sendMessage()">Send</button>
+  </div>
+</div>
